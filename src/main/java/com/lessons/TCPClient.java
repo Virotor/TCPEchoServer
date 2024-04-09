@@ -6,22 +6,22 @@ import java.net.Socket;
 public class TCPClient extends TCPEcho {
 
 
-    protected TCPClient(int port) {
-        super(port);
+    protected TCPClient(int port, String hostName) {
+        super(port, hostName);
     }
 
     @Override
     public void run() {
         try {
-            try (Socket clientSocket = new Socket("localhost", port);
+            try (Socket clientSocket = new Socket(hostName, port);
                  BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
                  BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                  BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             ) {
 
-                System.out.println("Вы что-то хотели сказать? Введите это здесь:");
-                String word = reader.readLine();
-                out.write(word + "\n");
+               /* System.out.println("Echo to send, and stop to exit");
+                String word = reader.readLine();*/
+                out.write("Hello I'm " + Thread.currentThread().getName() + "\n");
                 out.flush();
                 String serverWord = in.readLine();
                 System.out.println(serverWord);
