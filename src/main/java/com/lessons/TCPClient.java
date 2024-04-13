@@ -18,10 +18,9 @@ public class TCPClient extends TCPEcho {
                  BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                  BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             ) {
-
-               /* System.out.println("Echo to send, and stop to exit");
-                String word = reader.readLine();*/
-                out.write("Hello I'm " + Thread.currentThread().getName() + "\n");
+                System.out.println("Echo to send, and stop to exit");
+                String word = reader.readLine();
+                out.write(word + "\n");
                 out.flush();
                 String serverWord = in.readLine();
                 System.out.println(serverWord);

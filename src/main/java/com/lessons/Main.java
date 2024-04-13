@@ -8,7 +8,7 @@ public class Main {
 
     private static final String defaultHostName = "localhost";
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("1 Client. 2 Server");
